@@ -66,7 +66,7 @@ function Form({ show_Alert }) {
         body: JSON.stringify({ ...credentials })
       })
 
-      const json = await res.json();
+      // const json = await res.json();
       // console.log(json)
       getformdata();
 
@@ -82,7 +82,7 @@ function Form({ show_Alert }) {
         body: JSON.stringify({ comp_name,Fname,email,gender,address,phone,bank,c_type,territory })
       })
 
-      const json = await res.json();
+      // const json = await res.json();
       // console.log(json)
       getformdata();
 
@@ -99,7 +99,10 @@ function Form({ show_Alert }) {
   const onchange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
     setFormdetail({...formdetail,"status":"unfilled"})
-    setSave(false)
+    if(save === false){
+     return setSave(false)
+    }
+    setSave("update")
   }
   const Handlesubmit = (e) => {
     e.preventDefault();
@@ -246,7 +249,11 @@ function Form({ show_Alert }) {
               <textarea value={credentials.address} onChange={onchange} name="address" id="Address" cols="20" rows="3"></textarea>
             </div>
             <button disabled={save === "saved" ? true : false} className='save_btn' type='submit'>
-              <i className={`mx-2 fa-solid ${save === "saved" ? "fa-circle-check" : "fa-cloud-arrow-up"} `}></i>{save === true ? "Saving..." : ""}{save === "saved" ? "Saved" : ""}{!save ? "Save" : ""}
+              <i className={`mx-2 fa-solid ${save === "saved" ? "fa-circle-check" : "fa-cloud-arrow-up"} `}></i>
+              {save === true && "Saving..."}
+              {save === "saved" && "Saved"}
+              {!save && "Save"}
+              {save === "update" && "Save Changes"}
             </button>
           </form>
         </div>

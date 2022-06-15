@@ -145,7 +145,7 @@ form button{
   position: absolute;
   top: 4em;
   right: 2em;
-  width: 7em;
+  width: fit-content;
   border: none;
   background: rgb(20, 110, 190);
   font-size: 1.2em;

@@ -35,7 +35,7 @@ function App() {
            { localStorage.getItem("token") ? <Route  exact path="/" element={<Home show_Alert={show_Alert}/>}/>
                     : <Route exact path="/" element={ <Login show_Alert={show_Alert} />}/>}
             <Route exact path="/Login" element={<Login show_Alert={show_Alert}/>} />
-            <Route exact path="/Signup" element={<Signup />} />
+            <Route exact path="/Signup" element={<Signup show_Alert={show_Alert}/>} />
             <Route exact path="/clientlist" element={<Clients/>} />
             <Route exact path="/form" element={<Form show_Alert={show_Alert}/>} />
           </Routes>

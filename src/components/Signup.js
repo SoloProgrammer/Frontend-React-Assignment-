@@ -21,9 +21,30 @@ function Signup(props) {
         const { name1, email, password, cpassword } = credentials
 
         if (password !== cpassword) {
-           props.show_Alert("Password and confirm password must match..","danger")
+          return props.show_Alert("Password and confirm password must match..","danger")
         }
 
+        let res = await fetch("http://localhost:5000/api/auth/createuser",
+        {
+            method:"POST",
+            headers:{
+                "auth-token":localStorage.getItem('token'),
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({name1, email, password})
+        })
+
+        const json = await res.json();
+
+        // console.log(json)
+        if(!json.status){
+            return props.show_Alert(json.msg,"danger")
+        }
+        
+        if(json.status){
+            props.show_Alert(json.msg ,"success")
+            navigate('/login')
+        }
 
     }
     return (

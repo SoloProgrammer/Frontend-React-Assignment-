@@ -66,8 +66,6 @@ function Form({ show_Alert }) {
         body: JSON.stringify({ ...credentials })
       })
 
-      // const json = await res.json();
-      // console.log(json)
       getformdata();
 
     }

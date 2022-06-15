@@ -1,0 +1,29 @@
+body{
+    /* background: red; */
+    position: relative;
+    color: rgb(28, 36, 48);
+}
+
+.Homebox h1{
+    transform: rotate(5deg);    
+    margin-bottom: .6em;
+
+}
+.Homebox img{
+    width: 30rem;
+}
+.Homebox .img{
+    width: 30rem;
+    overflow: hidden;
+    border-radius: 1em;
+    transform: rotate(-5deg);  
+    transition: .4s;;  
+    margin-top: 3em;
+}
+
+.Homebox .img:hover{
+    transform: rotate(5deg);  
+}
+.Homebox .img:hover .Homebox h1{
+    transform: rotate(0deg);  
+}

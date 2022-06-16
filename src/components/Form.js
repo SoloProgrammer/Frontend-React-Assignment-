@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 function Form({ show_Alert }) {
 
   const [formdetail, setFormdetail] = useState({
-    "status":"unfilled",
+    "Status": "unfilled",
   })
 
   const [save, setSave] = useState(false)
@@ -35,7 +35,7 @@ function Form({ show_Alert }) {
 
     // console.log(json)
 
-    setFormdetail({...formdetail,
+    setFormdetail({
       "Status": json.status,
       "msg": json.msg
     })
@@ -48,57 +48,60 @@ function Form({ show_Alert }) {
 
   }
 
-
   useEffect(() => {
     getformdata();
   }, [])
+
+  const Updateformdata = async () => {
+    const { comp_name, Fname, email, gender, address, phone, bank, c_type, territory } = credentials
+
+    const res = await fetch(`http://localhost:5000/api/form/updateformdata/${credentials._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ comp_name, Fname, email, gender, address, phone, bank, c_type, territory })
+    })
+
+    // getformdata();
+  }
+
+  const Addformdata = async () => {
+    const res = await fetch("http://localhost:5000/api/form/addformdata", {
+      method: "POST",
+      headers: {
+        "auth-token": localStorage.getItem("token"),
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ ...credentials })
+    })
+  }
+
 
   const saveformdata = async () => {
 
 
     if (formdetail.Status === "unfilled") {
-      const res = await fetch("http://localhost:5000/api/form/addformdata", {
-        method: "POST",
-        headers: {
-          "auth-token": localStorage.getItem("token"),
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ ...credentials })
-      })
-
-      getformdata();
-
+      Addformdata();
     }
-    else{
-      const {comp_name,Fname,email,gender,address,phone,bank,c_type,territory} = credentials
-      // console.log(credentials._id)
-      const res = await fetch(`http://localhost:5000/api/form/updateformdata/${credentials._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ comp_name,Fname,email,gender,address,phone,bank,c_type,territory })
-      })
-
-      // const json = await res.json();
-      // console.log(json)
-      getformdata();
-
+    else {
+      Updateformdata();
     }
+    
+    getformdata();
 
     setTimeout(() => {
       setSave(false)
       setSave("saved")
     }, 1000);
-    // getformdata();
   }
 
 
   const onchange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
-    setFormdetail({...formdetail,"status":"unfilled"})
-    if(save === false){
-     return setSave(false)
+    setFormdetail({ ...formdetail, "status": "unfilled" })
+    if (save === false) {
+      return setSave(false)
     }
     setSave("update")
   }

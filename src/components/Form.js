@@ -255,6 +255,7 @@ function Form({ show_Alert }) {
              {save === "saved" && <i className={`mx-2 fa-solid fa-circle-check`}></i>}
              {save === true && <i class="mx-2 animate fa-solid fa-circle-notch"></i>}
              {save === "update" && <i class="mx-2 fa-solid fa-cloud-arrow-up"></i>}
+             {save === false && <i class="mx-2 fa-solid fa-cloud-arrow-up"></i>}
 
               {save === true && "Saving..."}
               {save === "saved" && "Saved"}

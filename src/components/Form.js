@@ -33,8 +33,6 @@ function Form({ show_Alert }) {
 
     const json = await res.json();
 
-    // console.log(json)
-
     setFormdetail({
       "Status": json.status,
       "msg": json.msg
@@ -43,7 +41,6 @@ function Form({ show_Alert }) {
     if (json.status === "filled") {
       setSave("saved")
       setCredentials(json.formdata);
-      // console.log(credentials)
     }
 
   }
@@ -63,7 +60,6 @@ function Form({ show_Alert }) {
       body: JSON.stringify({ comp_name, Fname, email, gender, address, phone, bank, c_type, territory })
     })
 
-    // getformdata();
   }
 
   const Addformdata = async () => {
@@ -113,7 +109,6 @@ function Form({ show_Alert }) {
     }
     setSave(true)
     saveformdata();
-    // console.log(credentials)
   }
   return (
     <>
@@ -156,7 +151,6 @@ function Form({ show_Alert }) {
                       type="radio"
                       value="male"
                       name='gender'
-                      // checked={gender === 'male'}
                       onChange={onchange}
                     />
                   </div>
@@ -184,7 +178,6 @@ function Form({ show_Alert }) {
                       name='gender'
                       type="radio"
                       value="other"
-                      // checked={gender === 'male'}
                       onChange={onchange}
                     />
                   </div>
@@ -217,7 +210,6 @@ function Form({ show_Alert }) {
                       type="radio"
                       value="Individual"
                       name='c_type'
-                      // checked={gender === 'male'}
                       onChange={onchange}
                     />
                   </div>
@@ -231,7 +223,6 @@ function Form({ show_Alert }) {
                       type="radio"
                       value="Company"
                       checked={credentials.c_type === 'Company'}
-                      // checked={gender === 'male'}
                       onChange={onchange}
                     />
                   </div>
@@ -253,9 +244,9 @@ function Form({ show_Alert }) {
             </div>
             <button disabled={save === "saved" ? true : false} className='save_btn' type='submit'>
              {save === "saved" && <i className={`mx-2 fa-solid fa-circle-check`}></i>}
-             {save === true && <i class="mx-2 animate fa-solid fa-circle-notch"></i>}
-             {save === "update" && <i class="mx-2 fa-solid fa-cloud-arrow-up"></i>}
-             {save === false && <i class="mx-2 fa-solid fa-cloud-arrow-up"></i>}
+             {save === true && <i className="mx-2 animate fa-solid fa-circle-notch"></i>}
+             {save === "update" && <i className="mx-2 fa-solid fa-cloud-arrow-up"></i>}
+             {save === false && <i className="mx-2 fa-solid fa-cloud-arrow-up"></i>}
 
               {save === true && "Saving..."}
               {save === "saved" && "Saved"}

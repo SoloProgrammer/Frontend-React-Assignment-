@@ -141,6 +141,7 @@ form button{
   font-family: unset;
   padding-bottom: .5em;
 }
+
 .save_btn{
   position: absolute;
   top: 4em;
@@ -235,6 +236,9 @@ form button{
   margin: auto;
 }
 
+.txt-blue-500{
+  color: #2770f3;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

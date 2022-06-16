@@ -114,7 +114,8 @@ function Form({ show_Alert }) {
   }
   return (
     <>
-      {save === "saved" && <p className='detail' >If you want to update form data you can just make changes the saved button will automatically change to Savechanges button when uou clicked on it it will automatically update the form data in the cloud </p>}
+      {save === "saved" && <p className='detail' >If you want to update form data you can just make changes in the form and  the saved button will automatically change to Savechanges button when you clicked ,it will automatically update the form data in the cloud </p>}
+      {save === "update" && <p className='detail txt-blue-500' >Save the Changes in cloud the on clicking the save changes Button <i className="mx-2 fa-solid fa-hand-point-right"></i></p>}
       <h3 className='msg my-1'>{formdetail.msg}</h3>
       <div className="container my-1 shadow_con">
         <div className="formbox">

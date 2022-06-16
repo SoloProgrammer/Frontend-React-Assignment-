@@ -254,7 +254,6 @@ function Form({ show_Alert }) {
             <button disabled={save === "saved" ? true : false} className='save_btn' type='submit'>
              {save === "saved" && <i className={`mx-2 fa-solid fa-circle-check`}></i>}
              {save === true && <i class="mx-2 animate fa-solid fa-circle-notch"></i>}
-             {/* {save === true && <i class="mx-2 animate fa-solid fa-spinner"></i>} */}
              {save === "update" && <i class="mx-2 fa-solid fa-cloud-arrow-up"></i>}
 
               {save === true && "Saving..."}

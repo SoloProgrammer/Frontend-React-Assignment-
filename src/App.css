@@ -235,6 +235,18 @@ form button{
   /* margin-left: ; */
   margin: auto;
 }
+.animate{
+  animation: load 1.7s linear infinite;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(-360deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
 
 .txt-blue-500{
   color: #2770f3;

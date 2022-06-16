@@ -85,15 +85,15 @@ function Form({ show_Alert }) {
       Addformdata();
     }
     else {
+      setSave(true)
       Updateformdata();
     }
     
-    getformdata();
-
     setTimeout(() => {
-      setSave(false)
+      getformdata();
       setSave("saved")
-    }, 1000);
+    }, 700);
+
   }
 
 
@@ -119,7 +119,8 @@ function Form({ show_Alert }) {
     <>
       {save === "saved" && <p className='detail' >If you want to update form data you can just make changes in the form and  the saved button will automatically change to Savechanges button when you clicked ,it will automatically update the form data in the cloud </p>}
       {save === "update" && <p className='detail txt-blue-500' >Save the Changes in cloud the on clicking the save changes Button <i className="mx-2 fa-solid fa-hand-point-right"></i></p>}
-      <h3 className='msg my-1'>{formdetail.msg}</h3>
+
+      {<h3 className='msg my-1'>{formdetail.msg}</h3>}
       <div className="container my-1 shadow_con">
         <div className="formbox">
           <form onSubmit={Handlesubmit} >
@@ -251,7 +252,11 @@ function Form({ show_Alert }) {
               <textarea value={credentials.address} onChange={onchange} name="address" id="Address" cols="20" rows="3"></textarea>
             </div>
             <button disabled={save === "saved" ? true : false} className='save_btn' type='submit'>
-              <i className={`mx-2 fa-solid ${save === "saved" ? "fa-circle-check" : "fa-cloud-arrow-up"} `}></i>
+             {save === "saved" && <i className={`mx-2 fa-solid fa-circle-check`}></i>}
+             {save === true && <i class="mx-2 animate fa-solid fa-circle-notch"></i>}
+             {/* {save === true && <i class="mx-2 animate fa-solid fa-spinner"></i>} */}
+             {save === "update" && <i class="mx-2 fa-solid fa-cloud-arrow-up"></i>}
+
               {save === true && "Saving..."}
               {save === "saved" && "Saved"}
               {!save && "Save"}

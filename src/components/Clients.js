@@ -9,6 +9,7 @@ function Clients() {
     const[Loading,setloading] = useState(true)
 
     const getallclients = async () => {
+        // console.log("")
         let res = await fetch("http://work.8848digitalerp.com/api/resource/Client",
             {
                 method: 'GET',
